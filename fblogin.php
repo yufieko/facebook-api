@@ -24,7 +24,7 @@ use Facebook\HttpClients\FacebookCurlHttpClient;
 use Facebook\HttpClients\FacebookHttpable;
 
 // inisialisasi applikasi dengan app id dan secret id
-FacebookSession::setDefaultApplication( '841753505904139','c33c20dd54a7bdc0c5dd0fa1a573b6fa' );
+FacebookSession::setDefaultApplication( 'APP_ID','SECRET_ID' );
 
 // login helper dengan redirect_uri
 $helper = new FacebookRedirectLoginHelper(base_url . "fblogin.php");
