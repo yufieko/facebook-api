@@ -29,7 +29,7 @@ if(isset($_GET['login']) == 1) {
 
 $tombol = "";
 // pengecekan session LOGGED_IN untuk menentukan isi variabel tombol
-if ( $_SESSION['LOGGED_IN'] ) {
+if ( !empty($_SESSION['LOGGED_IN']) ) {
 	$tombol = base_url . '?logout=1';
 } else {
 	$tombol = base_url . '?login=1';
@@ -82,7 +82,7 @@ if ( $_SESSION['LOGGED_IN'] ) {
                                     <h3 class="panel-title">Login with Facebook</h3>
                                 </div>
                                 <div class="panel-body" style="text-align:center;">
-                                	<?php if ($_SESSION['LOGGED_IN']): ?>
+                                	<?php if (!empty($_SESSION['LOGGED_IN'])): ?>
                                 		<div class="row">
                     					<div style="padding: 0 auto;text-align: left;">
 	                                	<div class="list-group">
