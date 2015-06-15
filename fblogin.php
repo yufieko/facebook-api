@@ -2,13 +2,9 @@
 // memulai session
 session_start();
 
-// mendefinisikan base_url dinamis
-$root = "http://".$_SERVER['HTTP_HOST'];
-$root .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
-define('base_url',$root);
-
 // load file autoload untuk meload file Facebook SDK
 require __DIR__ . '/autoload.php';
+require_once 'config.php';
 
 // load namespace Facebook SDK untuk PHP
 use Facebook\FacebookSession;
@@ -24,10 +20,10 @@ use Facebook\HttpClients\FacebookCurlHttpClient;
 use Facebook\HttpClients\FacebookHttpable;
 
 // inisialisasi applikasi dengan app id dan secret id
-FacebookSession::setDefaultApplication( 'APP_ID','SECRET_ID' );
+FacebookSession::setDefaultApplication( APP_ID, APP_SECRET );
 
 // login helper dengan redirect_uri
-$helper = new FacebookRedirectLoginHelper(base_url . "fblogin.php");
+$helper = new FacebookRedirectLoginHelper(BASE_URL . 'fblogin.php');
 
 try {
   $session = $helper->getSessionFromRedirect();
@@ -37,7 +33,7 @@ try {
   // When validation fails or other local issues
 }
 
-if ( isset( $session ) ) {
+if ( isset($session) ) {
   // graph api melakukan permintaan untuk user data
   $request = new FacebookRequest( $session, 'GET', '/me' );
   $response = $request->execute();
@@ -50,7 +46,7 @@ if ( isset( $session ) ) {
   $_SESSION['FBDATA'] = $graphObject->asArray();
 
   // melakukan auto post jika berhasil login
-  try {
+  /*try {
     $postLink = (new FacebookRequest(
       $session, 'POST', '/me/feed', array(
         'link' => 'http://uekifoy.tumblr.com',
@@ -61,19 +57,20 @@ if ( isset( $session ) ) {
   } catch(FacebookRequestException $e) {
     echo "Exception occured, code: " . $e->getCode();
     echo " with message: " . $e->getMessage();
-  }
+  }*/
 
   // redirect ke base url
-  header("Location: ".base_url);
-} else {
-  // show login url
-  // 'scope' => 'publish_actions, public_profile, email, user_about_me, read_stream',
-  $params = array(
-    'scope' => 'publish_actions, public_profile, email, user_about_me, user_birthday, user_hometown, user_location, user_relationships',
-  );
-  $loginUrl = $helper->getLoginUrl($params);
-  header("Location: ".$loginUrl);
-  // echo "login ".$tombol;
-}
+  header("Location: ". BASE_URL);
+} 
+// else {
+//   // show login url
+//   // 'scope' => 'publish_actions, public_profile, email, user_about_me, read_stream',
+//   $params = array(
+//     'scope' => 'publish_actions, public_profile, email, user_about_me, user_birthday, user_hometown, user_location, user_relationships',
+//   );
+//   $loginUrl = $helper->getLoginUrl($params);
+//   header("Location: ".$loginUrl);
+//   // echo "login ".$tombol;
+// }
 
 ?>
