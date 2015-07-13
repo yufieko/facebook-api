@@ -21,6 +21,6 @@ untuk tugas kuliah workshop aplikasi teknologi informasi
 - Facebook SDK v5.0 untuk PHP 
 - Bootstrap Material Design 0.3
 
-# tutorial
+# tutorial-dokumentasi
 - [yufieko_Facebook API.pdf](https://raw.githubusercontent.com/yufieko/facebook-api/master/yufieko_Facebook%20API.pdf)
 - [yufieko_PA Facebook API.pdf [updated]](https://raw.githubusercontent.com/yufieko/facebook-api/master/yufieko_PA%20Facebook%20API.pdf)
