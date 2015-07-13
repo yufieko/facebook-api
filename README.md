@@ -3,6 +3,9 @@ Facebook API Demo
 
 untuk tugas kuliah workshop aplikasi teknologi informasi
 
+# preview
+!["preview"](https://raw.githubusercontent.com/yufieko/facebook-api/master/screenshot.png "preview")
+
 # demo
 - bisa dicoba di http://uekifoy.hol.es/ namun harus kontak dulu ke aku buat dijadiin tester (yufieko@gmail.com)
 
