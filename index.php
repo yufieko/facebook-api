@@ -231,7 +231,7 @@ if ( !empty($_SESSION['facebook_access_token']) ) {
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title">Post to Wall</h4>
+                        <h4 class="modal-title"><i class="mdi-content-send"></i> Post to Wall</h4>
                     </div>
                     <div class="modal-body">
                         <span class="form-pesan"></span>
@@ -265,7 +265,7 @@ if ( !empty($_SESSION['facebook_access_token']) ) {
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title">Read Wall</h4>
+                        <h4 class="modal-title"><i class="mdi-action-dashboard"></i> Read Wall</h4>
                     </div>
                     <div class="modal-body">
                         <span class="form-pesan"></span>
@@ -287,7 +287,7 @@ if ( !empty($_SESSION['facebook_access_token']) ) {
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title">Read Wall</h4>
+                        <h4 class="modal-title"><i class="mdi-communication-message"></i> Read Inbox</h4>
                     </div>
                     <div class="modal-body">
                         <span class="form-pesan"></span>
