@@ -399,15 +399,16 @@ if ( !empty($_SESSION['facebook_access_token']) ) {
                     var el = modal.find('#hereinbox');
                     el.empty();
                     $("body").addClass("loading");
+                    setTimeout(function(){ $("body").removeClass("loading"); }, 2500);
+                    el.append('<div class="col-xs-12 boox"><h2>maaf, fitur read_mailbox sudah tidak didukung Facebook :(</h2></div>')
 
-                    $.ajax({
+                    /*$.ajax({
                         url: "<?=BASE_URL . 'fbinbox.php';?>",
                         cache: false,
                         success: function (data) {
                             var obj = $.parseJSON(data);
                             setTimeout(function(){ $("body").removeClass("loading"); }, 2500);
                             for(var i=0;i<obj.length;i++){
-                                /*ini membuat div tiap iterasi*/
                                 var arr = obj[i];
                                 var isi = '<div class="col-xs-12 boox"><b>Ke:</b>' + arr['ke']
                                         + '<br><p><b>Pesan Terbaru:</b></p><blockquote><p>'+ arr['terakhir_pesan'] +'</p><small>'+ arr['terakhir_user'] +'</small></blockquote>'
@@ -418,7 +419,7 @@ if ( !empty($_SESSION['facebook_access_token']) ) {
                         error: function(err) {
                             console.log(err);
                         }
-                    });
+                    });*/
                 });
 
 
