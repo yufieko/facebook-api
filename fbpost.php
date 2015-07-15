@@ -1,18 +1,18 @@
 <?php
-// memulai session
+/*memulai session*/
 session_start();
 
-// load file autoload untuk meload file Facebook SDK
-// require __DIR__ . '/autoload.php';
-// ganti pakai composer
+/*require __DIR__ . '/autoload.php';
+load file autoload untuk meload file Facebook SDK
+ganti pakai composer*/
 require_once __DIR__ . '/vendor/autoload.php';
 require_once 'config.php';
 
-// load namespace Facebook SDK untuk PHP
-// gak perlu lagi
+/*load namespace Facebook SDK untuk PHP
+gak perlu lagi*/
 
-// inisialisasi applikasi dengan app id dan secret id
-// FacebookSession::setDefaultApplication( APP_ID, APP_SECRET );
+/*inisialisasi applikasi dengan app id dan secret id
+FacebookSession::setDefaultApplication( APP_ID, APP_SECRET );*/
 $fb = new Facebook\Facebook([
   'app_id' => APP_ID,
   'app_secret' => APP_SECRET,
@@ -25,8 +25,8 @@ $status['status'] = "";
 
 if ( isset($accessToken) ) {
   $cekisi = isset($_POST['isi']);
-  // var_dump($_POST);
-  // die();
+/*  var_dump($_POST);
+  die();*/
 
   if( $cekisi ) {
     $isi = $_POST['isi'];
@@ -48,22 +48,22 @@ if ( isset($accessToken) ) {
       }
       
       try {
-        // Returns a `Facebook\FacebookResponse` object
+        /*Returns a `Facebook\FacebookResponse` object*/
         $response = $fb->post('/me/feed', $linkData, $accessToken);
         $graphNode = $response->getGraphNode();
         
         $status['pesan'] = 'Posted with id: ' . $graphNode['id'];
-        //$status['pesan'] = 'Posted with id: ' . var_dump($isi);
+        /*$status['pesan'] = 'Posted with id: ' . var_dump($isi);*/
         $status['status'] = 1;
 
       } catch(Facebook\Exceptions\FacebookResponseException $e) {
         $status['pesan'] = 'Graph returned an error: ' . $e->getMessage();
         $status['status'] = 0;
-        //exit;
+        /*exit;*/
       } catch(Facebook\Exceptions\FacebookSDKException $e) {
         $status['pesan'] = 'Facebook SDK returned an error: ' . $e->getMessage();
         $status['status'] = 0;
-        //exit;
+        /*exit;*/
       }
     }
     

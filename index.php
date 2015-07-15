@@ -1,27 +1,26 @@
 <?php
-// memulai session
+/*memulai session*/
 session_start();
-//session_destroy();
 
-// load file autoload untuk meload file Facebook SDK
-//require __DIR__ . '/autoload.php';
-// ganti pakai composer
+/*load file autoload untuk meload file Facebook SDK
+require __DIR__ . '/autoload.php';
+ganti pakai composer*/
 require_once __DIR__ . '/vendor/autoload.php';
 require_once 'config.php';
 
-// load namespace Facebook SDK untuk PHP
-// use Facebook\FacebookSession;
-// use Facebook\FacebookRedirectLoginHelper;
+/*use Facebook\FacebookSession;
+load namespace Facebook SDK untuk PHP
+use Facebook\FacebookRedirectLoginHelper;*/
 
-// load fb
+/*load fb*/
 $fb = new Facebook\Facebook([
   'app_id' => APP_ID,
   'app_secret' => APP_SECRET,
   'default_graph_version' => 'v2.2',
 ]);
 
-// pengecekan bila didapat parameter logout dari url
-// untuk menghancurkan session
+/*pengecekan bila didapat parameter logout dari url
+untuk menghancurkan session*/
 
 if(isset($_GET['logout']) == 1) {
 	session_unset();
@@ -40,7 +39,7 @@ if(isset($_GET['logout']) == 1) {
 }
 
 $tombol = "";
-// pengecekan session LOGGED_IN untuk menentukan isi variabel tombol
+/*pengecekan session LOGGED_IN untuk menentukan isi variabel tombol*/
 if ( !empty($_SESSION['facebook_access_token']) ) {
 	$tombol = BASE_URL . '?logout=1';
 
@@ -111,9 +110,7 @@ if ( !empty($_SESSION['facebook_access_token']) ) {
                                     <h3 class="panel-title">Login with Facebook</h3>
                                 </div>
                                 <div class="panel-body" style="text-align:center;">
-                                	<?php if (!empty($_SESSION['LOGGED_IN'])): 
-                                        //var_dump($_SESSION['FBDATA']);
-                                    ?>
+                                	<?php if (!empty($_SESSION['LOGGED_IN'])): ?>
                                 		<div class="row">
                     					   <div class="col-md-12" style="padding: 0 auto;text-align: left;">
         	                                	<div class="list-group">
@@ -146,7 +143,6 @@ if ( !empty($_SESSION['facebook_access_token']) ) {
 			                            </div>
                                         
                                         <?php if (!empty($_SESSION['FBPHOTOS'])): 
-                                            //var_dump($_SESSION['FBPHOTOS']);
                                         ?>
                                         <div class="row">
                                             <div class="col-md-12">
@@ -169,14 +165,6 @@ if ( !empty($_SESSION['facebook_access_token']) ) {
 
                                                 </div>
                                                 
-                                                    <?php //var_dump($_SESSION['FBPHOTOS']); ?>
-                                                    
-                                                    
-                                                        <!-- <div class="col-sm-3 bounding-box" style="background-image:url('<?php echo $graphObject['data'][$i]->source; ?>');"><a href="<?php echo $graphObject['data'][$i]->source; ?>" title="<?php echo isset($graphObject['data'][$i]->name) == TRUE ? $graphObject['data'][$i]->name : 'Photo'; ?>" data-gallery></a></div> -->
-
-                                                    
-                                                    
-                                                
                                                 
                                             </div>
                                         </div>
@@ -185,13 +173,8 @@ if ( !empty($_SESSION['facebook_access_token']) ) {
                                         <form id="form1" name="form1" method="post" action="<?php echo BASE_URL; ?>index.php">
                                         <?php /*if (empty($_SESSION['FBPHOTOS'])):*/ $cekfoto = empty($_SESSION['FBPHOTOS']); ?>
                                             <span data-toggle="tooltip" data-placement="top" data-original-title="<?= $cekfoto ? 'Get Photos' : 'Update Photos';?>"><button type="button" class="btn btn-info" id="btn-photo" data-link="<?php echo $photo; ?>"><i class="mdi-image-photo"></i>  <?= $cekfoto ? 'Get Photos' : 'Update Photos';?></button></span>
-                                        <?php //endif ?>
-                                        <?php //if (empty($_SESSION['FBWALL'])): ?>
                                             <span data-toggle="tooltip" data-placement="top" data-original-title="Get Wall Feed"><button type="button" class="btn btn-primary" id="btn-wall" data-toggle="modal" data-target="#modalwall"><i class="mdi-action-dashboard"></i>  Get Walls</button></span>
-                                        <?php //endif ?>
-                                        <?php //if (empty($_SESSION['FBINBOX'])): ?>
                                             <span data-toggle="tooltip" data-placement="top" data-original-title="Get Inbox"><button type="button" class="btn btn-primary" id="btn-inbox" data-toggle="modal" data-target="#modalinbox"><i class="mdi-communication-message"></i>  Get Inbox</button></span>
-                                        <?php //endif ?>
                                         <span data-toggle="tooltip" data-placement="top" data-original-title="Post via Uekifoy"><button type="button" class="btn btn-primary" id="btn-post" data-toggle="modal" data-target="#modalpost"><i class="mdi-content-send"></i>  Post via..</button></span>
 	                                    </form>
                                         <span data-toggle="tooltip" data-placement="top" data-original-title="Logout Now"><button type="button" class="btn btn-info" id="btn-fb" data-link="<?php echo $tombol; ?>"><i class="mdi-navigation-cancel"></i>  Logout Now</button></span>
@@ -344,14 +327,13 @@ if ( !empty($_SESSION['facebook_access_token']) ) {
 
                 $('button.btn-info').click(function(){
                     var options =  {
-                        content: "Loading, please wait .....", // text of the snackbar
-                        style: "toast", // add a custom class to your snackbar
-                        timeout: 2500 // time in milliseconds after the snackbar autohides, 0 is disabled
+                        content: "Loading, please wait .....", /*// text of the snackbar*/
+                        style: "toast", /*// add a custom class to your snackbar*/
+                        timeout: 2500 /*// time in milliseconds after the snackbar autohides, 0 is disabled*/
                     }
                     $.snackbar(options);
                     var link = $(this).data('link');
                     setTimeout(function(){
-                        //alert(link);
                         window.location.href = link;
                     }, 2500);
                 });
