@@ -1,4 +1,7 @@
 <?php
+/**
+ * PERHATIAN read_mailbox udah deprecated alias udah tidak didukung oleh Facebook
+ */
 /** memulai session */
 session_start();
 
